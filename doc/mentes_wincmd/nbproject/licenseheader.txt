@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Mentés, WinCmd szkripttel. (mentes WinCmd)
+${licensePrefix}Bárki felhasználhatja.
+<#if licenseLast??>
+${licenseLast}
+</#if>
