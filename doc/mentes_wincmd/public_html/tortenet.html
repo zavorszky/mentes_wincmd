@@ -192,7 +192,7 @@ Bárki felhasználhatja.
             </section>
 
             <section>
-                <h2><time datetime="2024-10-03">2024.10.03</time></h2>
+                <h2><time datetime="2024-10-03">2024.10.03</time> - <time datetime="2024-10-05">2024.10.05</time></h2>
                 <ol>
                     <li>
                         Az [P_adatelőkészítés] (&uarr;:2024.10.02/1) programnak
@@ -207,15 +207,25 @@ Bárki felhasználhatja.
                         Válasszuk a második esetet! Az első három sor és az első
                         két oszlop legyen vezérlő oszlop. Vegyünk egy példát!
                         <figure>
-                            <img src="./resources/images/egyszerutabla_1.png" width="577">
-                            <figcaption>CSV táblázat a problémákról és a megoldásra mutató linkekről</figcaption>
+                            <img src="./resources/images/egyszerutabla_1.png" width="1006">
+                            <figcaption>1. ábra, CSV táblázat a problémákról és a megoldásra mutató linkekről</figcaption>
+                        </figure>
+                        Ez alapján szeretnénk egy olyab táblázatot, ami valahogy
+                        így néz li:
+                        <figure>
+                            <img src="./resources/images/egyszerutabla_2.png" width="514">
+                            <figcaption>2. ábra, Eredmény táblázat a problémákról és a megoldásra mutató linkekről</figcaption>
                         </figure>
                     </li>
-                    <li>A táblázat tartalmi része a C4:F11 területen van.</li>
+                    <li>1. ábra<br>
+                        A táblázat tartalmi része a C5:F11 területen van.
+                    </li>
                     <li>
                         A C1:F1 terület mondja meg, hogy melyik oszlopok kerülnek
                         az eredmény táblázatba, másszóval melyik oszlopok lesznek
-                        láthatók. i = látható, n = nem látható.
+                        láthatók:<br>
+                        i = látható<br>
+                        n = nem látható
                     </li>
                     <li>
                         A C2:F2 terület mondja meg, hogy melyik oszlop szerint kell
@@ -225,9 +235,39 @@ Bárki felhasználhatja.
                         r- : csökkenő rendezettség<br>
                     </li>
                     <li>
-                        A táblázat fej része, a fejsorok a C3:F4 területen van.
-                        Miért? Mert a B3:B4 területen a fellákban <q>f</q> betű
-                        szerepel.
+                        A táblázat fej része, a fejsorai a C3:F4 területen van.
+                        Miért? Mert a B3:B4 területen a cellákban <q>f</q> betű
+                        szerepel. Ezek az <q>f</q> betűk jelzik, hogy a hozzájuk
+                        tartozó sorok fejsorok.
+                    </li>
+                    <li>
+                        A táblázat törzs része, a törzssorai a C5:F11 területen
+                        van.
+                    </li>
+                    <li>
+                        Nem minden fej- és törzssor kerük be az eredmény táblába,
+                        nem mindegyik lesz látható. Az A3:A11 terület
+                        mondja meg hogy melyik:<br>
+                        i = látható<br>
+                        n = nem látható
+                    </li>
+                    <li>
+                        A táblázattörzs celláiban kétféle dolog lehet:
+                        <ul>
+                            <li>egyszerű szöveg</li>
+                            <li>utasítás egy HTML elem létrehozásához</li>
+                        </ul>
+                        Jelen esetben ez az utasítás:<br>
+                        <code>&lt;a&gt;,1,3</code><br>
+                        ami azt jelenti, hogy létre kell hozni az <abbr title="anchor">&lt;a&gt;</abbr>
+                        HTML elemet, aminek az &quot;href&quot; attribútumát az 1.
+                        cellából, a &quot;text&quot; értékét a 3. cellából kell
+                        venni (a számokat ugyan abban a sorban és a táblázat tartalmi
+                        részét figyelembevéve kell érteni).
+                    </li>
+                    <li>
+                        2. ábra<br>
+                        Ez mutatja hogy milyen eredményt szeretnénk elérni.
                     </li>
                 </ol>
 
