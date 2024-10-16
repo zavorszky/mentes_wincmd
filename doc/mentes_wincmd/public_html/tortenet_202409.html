@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+Mentés, WinCmd szkripttel. (mentes WinCmd)
+Bárki felhasználhatja.
+-->
+<html lang="hu-HU">
+    <head>
+        <title>tortenet_202409</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./resources/css/css_basic.css">
+
+        <link rel="stylesheet" href="./resources/fontavesome/css/fontawesome.css">
+        <link rel="stylesheet" href="./resources/fontavesome/css/brands.css">
+        <link rel="stylesheet" href="./resources/fontavesome/css/solid.css">
+    </head>
+    <body>
+        <header id="header_base">
+            Mentés - WinCmd &Gt; Történet / 2024.09
+        </header>
+        <nav>
+            <ul>
+                <li><a href="tortenet.html" class="c_menuelem_nem_valasztaho">Történet</a></li>
+                <li><a href="linkgyujtemeny.html">Link gyűjtemény</a></li>
+                <li><a href="index.html" class="c_menuelem_kiemelt">index</a></li>
+            </ul>
+        </nav>
+
+        <!-- -->
+
+        <main>
+            <section>
+                <h2><time datetime="2024-09-05">2024.09.05</time></h2>
+                <ol>
+                    <li>
+                        Új verzió: v2.0
+                    </li>
+                    <li>
+                        Eredetileg a script file-ok karakter kódolása UTF-8
+                        volt. Jelentkezett egy hiba: ha a mentendő könyvtárak egyikébe
+                        írtam a napló file-t, akkor a &quot;7zip&quot; hibaüzenetet
+                        küldött (jogosan), hogy nem tudja írni a napló file-t. A hibaüzenet
+                        magyarul jelent meg (örömömre), de ékezethibásan és a napló
+                        file is ékezethibás volt.<br>
+                        Ezért a script file-okat átírtam
+                        <abbr title="MS-DOS Latinn II-es kódlap">OEM 852</abbr>-es
+                        kódolásúvá. Így jó lett a kiírás a képernyőn, viszont a
+                        napló file továbbra is ékezethibás volt. A &quot;notepad++&quot;
+                        azt jelezte, hogy
+                        <abbr title="American National Standards Institute">ANSI</abbr>
+                        kódolású a file. Így már rendben vagyun, hiszen a különböző
+                        ANSI &quot;kódolású&quot; file-ok ugyan azt a bitsorozatot
+                        tartalmazzák, csak a felolvasó programok (pl. az editor)
+                        értelmezik különbözőképpen. Tehát csak a &quot;notepad++&quot;
+                        kódolását kell átállítanom OEM 852-re és már ékezethiba
+                        nélkül látom a szöveget.
+                    </li>
+                    <li>
+                        A tesztelhetőség érdekében a <var>mentes_teszt</var>
+                        <abbr title="Operating System">OS</abbr> változót vezettembe.
+                        Ha az értéke &quot;N&quot; vagy &quot;n&quot; (nem tesztelés),
+                        akkor végrehajtásra kerül a tömörítő program blokk is. Egyébként nem.
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2><time datetime="2024-09-06">2024.09.06</time></h2>
+                <ol>
+                    <li>
+                        Dokumentálást segítő segédprogram készítése: a használt
+                        linkek táblázatának generálása. A program Python prog. nyelven
+                        készül.
+                    </li>
+                    <li>
+                        Az egyszerű tábla generáló alkalmazás ( <abbr title="Táblázat Generáló Alkalmazás Egyszerű">TGAE</abbr> )
+                        aminek a futásának eredménye egy .html file, amit (egy megfelelően
+                        előkészített) .html dokumentumba kell illeszte.bemeneti.
+                        Az alkalmazás paraméterei:
+                        <ol>
+                            <li>
+                                Egy <abbr title="Comma-Separated Value file">CSV</abbr>
+                                szöveg állomány, amiben a generálandó táblázat
+                                sorai vannak.<br>
+                                A táblázat formázása
+                                <abbr title="Cascading Style Sheets">CSS</abbr>
+                                elemekkel történik. A táblázatot egy .html dokumentumba
+                                kell beilleszteni. A táblázat <b>table</b> elemének
+                                egy osztály (class) tulajdonság adható meg. Ezzel,
+                                és a táblázat elemeire történő CSS parancsokkal
+                                formázhatjuk a táblázatot.
+                            </li>
+                            <li>
+                                Egy CSS osztály a <b>table</b> elemhez.
+                            </li>
+                            <li>Meg kell adni rendezési paramétereket - és ez ennek
+                                az alkalmazásnak az igazi célja - amivel a táblázat rendezését
+                                megadhatjuk:
+                                <ul>
+                                    <li>A rendezés oszlopa.</li>
+                                    <li>A rendezés iránya - növekvő / csökkenő.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2><time datetime="2024-09-29">2024.09.29</time></h2>
+                <ol>
+                    <li>
+                        A <abbr title="Táblázat Generáló Alkalmazás Egyszerű">TGAE</abbr>
+                        fejlesztése közben egyre több általánosítási ötlet jutott
+                        eszembe. Az applikáció belső szerkezetével nem voltam megelégedve,
+                        ami azt jelenti, hogy a program modulok / függvények / egyéb
+                        objektumok rendszerét nem tartottam megfelelőnek. Milyen
+                        feladatok különíthetők el? A feladatok végrehajtását hány
+                        / milyen függvényekkel lehet megvalósítani?
+                    </li>
+                    <li>
+                        Objelytumokat tudok elkülöníteni: CSV táblázat, HTML tálblázat<br>
+                        De mi alapján? Nyilván önkényesen.
+                    </li>
+                    <li>
+                        Van egy CSV táblázat. Ez a kiindulás.<br>
+                        Létre kell hozni egy HTML táblázatot a CSV táblázat alapján:<br>
+                        t_csv <i class="fa-solid fa-arrow-right"></i> [P] <i class="fa-solid fa-arrow-right"></i>t_html<br>
+                        Ezek a leg felső szintű objektumok. Részletezni kell a
+                        tulajdonságaikat.
+                    </li>
+                </ol>
+            </section>
+
+        </main>
+
+        <footer>
+            <dl>
+                <dt>ANSI</dt><dd>American National Standards Institute;</dd>
+                <dt>OEM 852</dt>
+                <dd>
+                    A 852-es kódlap (más néven CP852, IBM852, DOS kelet-európai
+                    kódlap, DOS Latin-2, ICSC2202) egy számítógépes kódlap,
+                    amit az MS-DOS latin betűs közép-európai nyelvi változataihoz
+                    (magyar, lengyel, bosnyák, horvát, cseh és szlovák nyelv) alakítottak ki 1986 augusztusában.
+                </dd>
+                <dt>OS</dt><dd>Operating System;</dd>
+                <dt>CSV file</dt><dd>Comma-Separated Value file = vesszővel elválasztott értékállomány;</dd>
+            </dl>
+        </footer>
+
+    </body>
+</html>
