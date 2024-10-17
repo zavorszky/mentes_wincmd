@@ -110,7 +110,7 @@ Bárki felhasználhatja.
                         Ez alapján szeretnénk egy olyab táblázatot, ami valahogy
                         így néz li:
                         <figure>
-                            <img src="./resources/images/egyszerutabla_2.png" width="514">
+                            <img src="./resources/images/egyszerutabla_1_eredmeny.png" width="514">
                             <figcaption>2. ábra, Eredmény táblázat a problémákról és a megoldásra mutató linkekről</figcaption>
                         </figure>
                     </li>
@@ -178,7 +178,7 @@ Bárki felhasználhatja.
                         a [P_html_táblázat_készítés] program argumentuamit. De...
                         Egy kicsit sokallom azt a munkát, amit bele kellene ölnöm
                         a [P_html_táblázat_készítés] megalkotásába. Ezért eszembe
-                        jutott, hogy az OpenOffice/Táblázat programjával elő tudok
+                        jutott, hogy az OpenOffice/Calc programjával elő tudok
                         állítani, valami nagyon gasonlót. Nézzük!
                     </li>
                 </ol>
@@ -188,12 +188,12 @@ Bárki felhasználhatja.
                 <h2><time datetime="2024-10-10">2024.10.10</time></h2>
                 <ol>
                     <li>
-                        Az OpenOffice/Táblázat-tal az adatokat szépen táblázatba
+                        Az OpenOffice/Calc-al az adatokat szépen táblázatba
                         rendezhetem. A cellákba kifejezéseket is írhatok, így
                         HTML elemeket is létre tudok hozni:
                         <figure>
-                            <img src="./resources/images/egyszerutabla_3.png" width="823">
-                            <figcaption>3. ábra, OpenOffice/Táblázat, kiinduló nyilvántartás.</figcaption>
+                            <img src="./resources/images/egyszerutabla_2-m_1.png" width="823">
+                            <figcaption>3. ábra, OpenOffice/Calc, kiinduló nyilvántartás.</figcaption>
                         </figure>
                     </li>
                     <li>
@@ -204,11 +204,112 @@ Bárki felhasználhatja.
                     <li>
                         Az A2:D5 terület a táblázat lényegi területe. Ebben van
                         az az ötlet, hogy egy cellában összeállíthatunk egy HTML
-                        elemet, jelen esetben egy anchor elemet:<br>
-                        <code>=&quot;&lt;a href=&apos;&quot;&D2&&quot;&apos;&gt;&quot;&B2&&quot;&lt;/a&gt;&quot;</code>
+                        elemet, jelen esetben egy anchor elemet. Pl. az A2 cellában:<br>
+                        <code>=&quot;&lt;a href=&apos;&quot; &amp; D2 &amp; &quot;&apos;&gt;&quot; &amp; B2 &amp; &quot;&lt;/a&gt;&quot;</code>
+                    </li>
+
+                </ol>
+            </section>
+
+            <section>
+                <h2><time datetime="2024-10-17">2024.10.17</time></h2>
+                Folytatom a ( &uarr;:2024.10.10/3 ) szakasztól.
+                <ol>
+                    <li>
+                        Hohó! Ha egy &lt;a&gt; elemet össze tudok rakni, akkor
+                        a táblázat egy sorát is. Ezt már nem írom le, mert elég
+                        kacifántos, másszóval nem szép.
+                    </li>
+                    <li>
+                        Írjunk makró függvényeket, amik az egyes HTML elemeket összeállítják
+                        a táblázat celláiból:
+                        <ol type="a">
+                            <li>html_tr() <i class="fa-solid fa-arrow-right"></i> táblázat sor</li>
+                            <li>html_td() <i class="fa-solid fa-arrow-right"></i> soron belül adatcella</li>
+                            <li>html_a() <i class="fa-solid fa-arrow-right"></i> anchor (horgony) elem</li>
+                        </ol>
+                    <li>
+                        Ezek segítségével egyszerűbben leírható egy táblázatsor
+                        és az aposztrófokkal és macskakörmökkel való bűvészkedése
+                        sincs gondunk:<br>
+                        <code>=HTML_TR(HTML_TD(HTML_A(C2;A2)) & HTML_TD(B2))</code><br>
+                        Az eredmény:<br>
+                        <code>&lt;tr&gt;&lt;td&gt;&lt;a href=&apos;https://cccccc3.com/dddd&apos;&gt;prob_aaaaa3&lt;/a&gt;&lt;/td&gt;&lt;td&gt;aaaaaa3&lt;/td&gt;&lt;/tr&gt;</code>
+                    </li>
+                    <li>
+                        Mintha már készen is lennénk. . . De van egy <q>kis</q>
+                        probléma. Ha a HTML_TD() függvény paramétere olyan sztring
+                        ami nem megengedett HTML karaktere tartalmaz, az összezavarja
+                        a böngészőt és nem tudja helyesen megjeleníteni a táblázatot.
+                        ezért kell még egy függvény, ami kicseréli a proglémás karaktereket
+                        HTML karakter entitásokra. Ez a <code>html_tovalidstring()</code>
+                        függvény.
+                    </li>
+                    <li>
+                        Ezzel az OpenOffice/Calc kifejezésünk így alakul:<br>
+                        <code>=HTML_TR(HTML_TD(HTML_A(C2;HTML_TOVALIDSTRING(A2))) & HTML_TD(B2))</code><br>
+                        Ez pedig így működik:
+                        <figure>
+                            <img src="./resources/images/egyszerutabla_2-m_6.png" width="1155">
+                            <figcaption>4. ábra, Táblázatsorok átalakítása HTML kódda OpenOffice/Calc-al. Végleges.</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        Összefoglalva:
+                        <ol type="a">
+                            <li>
+                                Egy OpenOffice/Calc-ban vezetem a táblázatot, amiben
+                                az egyik oszlopban a makró függvényekkel létrehozom
+                                a táblázat sorait. (Minden OpenOffice sor egy HTML
+                                táblázat sor.)
+                            </li>
+                            <li>
+                                Egy új tétel beírását az utolsó sor után írom.
+                            </li>
+                            <li>
+                                Rendezem a táblázatot.
+                            </li>
+                            <li>
+                                A HTML sorokkal felülírom a cél HTML táblázat sorait.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        A használt OpenOffice makrók kódjai:
+                        <pre><code>
+rem ----------------------------
+rem HTML elem készítés
+rem ----------------------------
+
+function <b>html_td</b>(p_text as string) as string
+	html_td = &quot;&lt;td&gt;&quot; &amp; p_text &amp; &quot;&lt;/td&gt;&quot;
+end function
+
+function html_tr(p_td_elemek as String) as string
+	html_tr = &quot;&lt;tr&gt;&quot; &amp; p_td_elemek &amp; &quot;&lt;/tr&gt;&quot;
+end function
+
+function html_a(p_href as string, p_text as string) as string
+	html_a=&quot;&lt;a href=&apos;&quot; &amp; p_href &amp; &quot;&apos;&gt;&quot; &amp; p_text &amp; &quot;&lt;/a&gt;&quot;
+end function
+
+function html_tovalidstring(p_string as string) as string
+	rem A &quot;p_string&quot;-ben lévő tiltott HTML karakterek cseréje karakter entitásokra.
+	dim v_eredmeny as string
+	rem
+	v_eredmeny = Replace(p_string, &quot;&amp;&quot;, &quot;&amp;amp;&quot;)
+	v_eredmeny = Replace(v_eredmeny, &quot;&quot;&quot;&quot;, &quot;&amp;quot;&quot;)
+	v_eredmeny = Replace(v_eredmeny, &quot;&apos;&quot;, &quot;&amp;apos;&quot;)
+	v_eredmeny = Replace(v_eredmeny, &quot;&lt;&quot;, &quot;&amp;lt;&quot;)
+	v_eredmeny = Replace(v_eredmeny, &quot;&gt;&quot;, &quot;&amp;gt;&quot;)
+	html_tovalidstring = v_eredmeny
+end function</code></pre>
                     </li>
                 </ol>
             </section>
+
+
+
 
         </main>
 
