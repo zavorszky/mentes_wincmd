@@ -1,9 +1,6 @@
-rem -- chcp 65001
 @echo off
 
-
 set mentes_teszt=N
-
 
 setlocal
 
@@ -15,9 +12,9 @@ echo . Ment‚s teszt (I/N) : %mentes_teszt%
 echo .
 echo . %date% %time%
 
-rem -- A t”m”r¡t‹ program be ll¡t sa (k”rnyezeti v ltoz¢: ffn_7za)
+rem -- A t”m”r¡t‹ program be ll¡t sa (k”rnyezeti v ltoz¢: set_ffn_7z)
 
-call e:\felhasznalok\dady\sajat_programok\_ini_\set_ffn_7za.cmd
+call e:\felhasznalok\dady\sajat_programok\_ini_\set_ffn_7z.cmd
 
 rem -- Kezd‚si id‹ feljegyz‚se
 
@@ -25,18 +22,19 @@ set z9kezdido=%time%
 
 rem -- Ment‚sek
 
-if /I "%mentes_teszt%" =="N" goto cim_mentes_kezdete
-goto cim_mentes_vege
+if /I "%mentes_teszt%"=="N" goto c_mentes_kezdete
+goto c_mentes_vege
 
-:cim_mentes_kezdete
+:c_mentes_kezdete
 
 rem -- Egyedi tesztel‚shez 'if'-ek
-if 1==1 %ffn_7za% a -r i:\mentes20\konyvtarak             h:\DADY\rend\konyvtarak\
-if 1==1 %ffn_7za% a    i:\mentes20\rend                   h:\DADY\rend\rend\
-if 1==1 %ffn_7za% a -r i:\mentes20\sajat_programok_ini_   e:\felhasznalok\dady\sajat_programok\_ini_\
-if 1==0 %ffn_7za% a -r i:\mentes20\sajat_programok_mentes e:\felhasznalok\dady\sajat_programok\mentes\
+if 1==1 %ffn_7z% a -r i:\mentes\konyvtarak                      h:\DADY\rend\konyvtarak\
+if 1==1 %ffn_7z% a    i:\mentes\rend                            h:\DADY\rend\rend\
+if 1==1 %ffn_7z% a -r i:\mentes\sajat_programok\_ini_           e:\felhasznalok\dady\sajat_programok\_ini_\
+if 1==1 %ffn_7z% a -r i:\mentes\sajat_programok\mentes          e:\felhasznalok\dady\sajat_programok\mentes\
+if 1==1 %ffn_7z% a -r i:\mentes\sajat_programok\python_packages e:\felhasznalok\dady\sajat_programok\python_packages\
 
-:cim_mentes_vege
+:c_mentes_vege
 
 rem -- Befejez‚si id‹ feljegyz‚se
 

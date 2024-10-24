@@ -34,9 +34,18 @@ mert sok python-os problémával találkoztam:
 
 Újrakezdem az egészet az utolsó Windows Cmd változattól kezdve.
 
+## Verziók
+
+|verzió   | Leírása |
+|:-------:|:--------|
+|00a | #Win10_CMD #log_file #7za.exev #ANSI|
+|01a | #Win10_CMD #log_file (#7za.exe vagy #7z.exe) #utf-8 #chcp_65001|
+|01b | #Win10_CMD #log_file (#7za.exe vagy #7z.exe) #utf-8 #chcp_65001 #install_cmd #konyvtarankenti_teszteles_segitese #futasido_merese|
+|01c | #Win10_CMD #log_file #7z.exe vagy #ANSI #konyvtarankenti_teszteles_segitese #futasido_merese|
+
 ## Készült
 
-Budapest, 2024-09-04
+Budapest, 2024-10-24
 
 # Szerző
 
