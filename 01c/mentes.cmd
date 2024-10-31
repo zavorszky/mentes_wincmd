@@ -49,7 +49,7 @@ echo . A ment‚s k‚sz.
 if /i "%2"=="-KIKAPCS" (
     echo .
     echo . Indul a kikapcsol s...
-    rem -- shutdown /s /f /p /d p:0:0 /c "Ment‚s  s le ll¡t s"
+    shutdown /s /f /c "Ment‚s  s le ll¡t s"
 )
 
 goto c_vege_es_pause
